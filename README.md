@@ -1,6 +1,6 @@
 {
-  "city": "Climate Portland - Oregon", 
-  "state": "Climate Portland - Oregon", 
+  "city": "Portland", 
+  "state": "Oregon", 
   "country": "United-States", 
   "January": {
     "Ave. high (F)": "47", 
