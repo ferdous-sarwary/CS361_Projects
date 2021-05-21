@@ -1,8 +1,6 @@
-# CS361-Project
----------------------------------
-## Microservice - WebScraper
+# CS361 - Weather Microservice WebScraper
 
-Send data in json format via post request:
+Example POST request to send to API service: 
 ```
 {
   'city':'portland'
