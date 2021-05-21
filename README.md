@@ -1,3 +1,15 @@
+# CS361-Project
+---------------------------------
+## Microservice - WebScraper
+
+Send data in json format via post request:
+```
+{
+  'city':'portland'
+  'state':'oregon'
+}
+```
+```
 {
   "city": "Portland", 
   "state": "Oregon", 
@@ -63,3 +75,4 @@
     "Ave. rainfall (in)": "5.49"
   }
 }
+```
