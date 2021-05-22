@@ -1,6 +1,6 @@
 # CS361 - Weather Microservice WebScraper
 
-Example POST request to send to API service: 
+Example POST request to send to API service: http://fsar.pythonanywhere.com/weather
 ```
 {
   'city':'portland'
