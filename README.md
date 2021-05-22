@@ -8,6 +8,7 @@ Example POST request to send to API service: http://fsar.pythonanywhere.com/weat
 }
 ```
 Example JSON response to above [Format 1]:
+Status_Code: 200
 ```
 {
   "city": "Portland", 
@@ -76,6 +77,7 @@ Example JSON response to above [Format 1]:
 }
 ```
 Example JSON response to above [Format 2]:
+Status_Code: 200
 ```
 {
   "city": "Tulsa", 
@@ -117,5 +119,13 @@ Example JSON response to above [Format 2]:
   "December Average High (F)": "51", 
   "December Average Low (F)": "31", 
   "December Average Rainfaill (in)": "1.88"
+}
+```
+Example Error:
+Status_Code: != 200
+```
+{
+404 Error:
+'Verify {"city": "portland","state": "Oregon"}' pair is valid. 
 }
 ```
