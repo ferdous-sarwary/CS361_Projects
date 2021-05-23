@@ -3,8 +3,8 @@
 Example POST request to send to API service: http://fsar.pythonanywhere.com/weather
 ```
 {
-  'city':'portland'
-  'state':'oregon'
+  "city":"portland"
+  "state":"oregon"
 }
 ```
 Example JSON response to above [Format 1]:
