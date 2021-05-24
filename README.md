@@ -123,8 +123,6 @@ Status_Code: 200
 ```
 Error Handling:
 ```
-The following errors are currently handled: 
-
 1: "city" key or its value, not entered, NULL, empty [""], or missing: 
 {
     "Either city or state not provided. Error:": "500"
