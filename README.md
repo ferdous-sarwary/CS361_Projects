@@ -126,6 +126,6 @@ Status_Code: != 200
 ```
 {
 404 Error:
-'Verify {"city": "portland","state": "Oregon"}' pair is valid. 
+{"Please verify city and state. Error Status Code: ": res.status_code}
 }
 ```
