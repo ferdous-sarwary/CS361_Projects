@@ -3,7 +3,7 @@
 Example POST request to send to API service: http://fsar.pythonanywhere.com/weather
 ```
 {
-  "city": "portland"
+  "city": "portland",
   "state": "oregon"
 }
 ```
