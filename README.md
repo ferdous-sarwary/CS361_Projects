@@ -125,7 +125,6 @@ Example Error:
 Status_Code: != 200
 ```
 {
-404 Error:
 {"Please verify city and state. Error Status Code: ": 404}
 }
 ```
