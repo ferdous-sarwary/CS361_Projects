@@ -121,10 +121,22 @@ Status_Code: 200
   "December Average Rainfaill (in)": "1.88"
 }
 ```
-Example Error:
-Status_Code: != 200
+Error Handling:
 ```
+The following errors are currently handled: 
+
+1: "city" key/value not entered, NULL, or empty [""]: 
 {
-{"Please verify city and state. Error Status Code: ": 404}
+    "Either city or state not provided. Error:": "500"
+}
+
+2: "state" key/value not entered, NULL, or empty [""]: 
+{
+    "Either city or state not provided. Error:": "500"
+}
+
+3: Invalid, city/state, or city, state combination:
+{
+    "Please verify city and state. Error Status Code: ": 404
 }
 ```
