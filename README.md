@@ -125,12 +125,12 @@ Error Handling:
 ```
 The following errors are currently handled: 
 
-1: "city" key/value not entered, NULL, or empty [""]: 
+1: "city" key or its value, not entered, NULL, empty [""], or missing: 
 {
     "Either city or state not provided. Error:": "500"
 }
 
-2: "state" key/value not entered, NULL, or empty [""]: 
+2: "state" key or its value, not entered, NULL, empty [""], or missing: 
 {
     "Either city or state not provided. Error:": "500"
 }
