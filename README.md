@@ -126,6 +126,6 @@ Status_Code: != 200
 ```
 {
 404 Error:
-{"Please verify city and state. Error Status Code: ": res.status_code}
+{"Please verify city and state. Error Status Code: ": 404}
 }
 ```
