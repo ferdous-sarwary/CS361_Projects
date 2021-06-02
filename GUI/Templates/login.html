@@ -1,0 +1,56 @@
+<!doctype html>
+<!-- Bootstrap HTML template from: https://getbootstrap.com/-->
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'main.css')}}">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	
+    <title>Weather Report!</title>
+  </head>
+  <body>
+<!-- Bootstrap Navbar template from: https://getbootstrap.com/-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Return to Homepage</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+	<h1 style="text-align: center;"><strong>{{error_message_one}}</strong></h1>
+  <h2 style="text-align: center;"><strong>{{error_code}}</strong></h2>
+  <h2 style="text-align: center;"><strong>{{error_message_two}}</strong></h2>
+  </div>
+</div>
+
+
+<footer>
+<h3 style="text-align: center;"><strong>Search Weather for Another City:</strong></h3>
+<p style="text-align: center;">Note: This will clear the city that was searched in the homepage.</p>
+<form action="/GUInewCity" method = "POST">
+<p style="text-align: center;"><input type="text" name="cityInput" placeholder="City e.g, Portland" size="20" spellcheck="true" /></p>
+<p style="text-align: center;"><input type="text" name="stateInput" placeholder="State e.g, Oregon" size="20" spellcheck="true" /></p>
+<p><input type = "submit" style="text-align: center;" value = "Search"/></p>
+</form>
+</footer>
+<!-- Footer -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+
+  </body>
+</html>
