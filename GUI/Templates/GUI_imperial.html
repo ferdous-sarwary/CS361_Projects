@@ -1,0 +1,128 @@
+<!doctype html>
+<!-- Bootstrap HTML template from: https://getbootstrap.com/-->
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'main.css')}}">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	
+    <title>Weather Report!</title>
+  </head>
+  <body>
+<!-- Bootstrap Navbar template from: https://getbootstrap.com/-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Return to Homepage</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+	<h1 style="text-align: center;"><strong>{{page_title}}</strong></h1>
+    <h1 style="text-align: center;"><strong>{{temperature_message}}</strong></h1>
+	<form action="/GUInewCity" method = "POST">
+        <p style="text-align: center;"><input type="hidden" name="cityInput" placeholder="City e.g, Portland" size="0" spellcheck="true" value= {{city_send}}/></p>
+        <p style="text-align: center;"><input type="hidden" name="stateInput" placeholder="State e.g, Oregon" size="0" spellcheck="true" value= {{state_send}}/></p>
+        <p><input type = "submit" style="text-align: center;" value = "Convert to °C"/></p>
+    </form>
+  </div>
+</div>
+<div class="weatherTable">
+<table class="table table-striped">
+<thead>
+	<tr>
+		<th></th>
+		<th>Jan</th>
+		<th>Feb</th>
+		<th>Mar</th>
+		<th>Apr</th>
+		<th>May</th>
+		<th>June</th>
+		<th>July</th>
+		<th>Aug</th>
+		<th>Sep</th>
+		<th>Oct</th>
+		<th>Nov</th>
+		<th>Dec</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>{{average_high_unit}}</td>
+		<td>{{january_high}}</td>
+		<td>{{february_high}}</td>
+		<td>{{march_high}}</td>
+		<td>{{april_high}}</td>
+		<td>{{may_high}}</td>
+		<td>{{june_high}}</td>
+		<td>{{july_high}}</td>
+		<td>{{august_high}}</td>
+		<td>{{september_high}}</td>
+		<td>{{october_high}}</td>
+		<td>{{november_high}}</td>
+		<td>{{december_high}}</td>
+	</tr>
+	<tr>
+		<td>{{average_low_unit}}</td>
+		<td>{{january_low}}</td>
+		<td>{{february_low}}</td>
+		<td>{{march_low}}</td>
+		<td>{{april_low}}</td>
+		<td>{{may_low}}</td>
+		<td>{{june_low}}</td>
+		<td>{{july_low}}</td>
+		<td>{{august_low}}</td>
+		<td>{{september_low}}</td>
+		<td>{{october_low}}</td>
+		<td>{{november_low}}</td>
+		<td>{{december_low}}</td>
+	</tr>
+	<tr>
+		<td>{{average_rainfall_unit}}</td>
+		<td>{{january_rain}}</td>
+		<td>{{february_rain}}</td>
+		<td>{{march_rain}}</td>
+		<td>{{april_rain}}</td>
+		<td>{{may_rain}}</td>
+		<td>{{june_rain}}</td>
+		<td>{{july_rain}}</td>
+		<td>{{august_rain}}</td>
+		<td>{{september_rain}}</td>
+		<td>{{october_rain}}</td>
+		<td>{{november_rain}}</td>
+		<td>{{december_rain}}</td>
+	</tr>
+	</tbody>
+</table>
+</div>
+
+
+<footer>
+<h3 style="text-align: center;"><strong>Search Weather for Another City:</strong></h3>
+<p style="text-align: center;">Note: This will clear the city that was searched in the homepage.</p>
+<form action="/GUInewCity" method = "POST">
+<p style="text-align: center;"><input type="text" name="cityInput" placeholder="City e.g, Portland" size="20" spellcheck="true" /></p>
+<p style="text-align: center;"><input type="text" name="stateInput" placeholder="State e.g, Oregon" size="20" spellcheck="true" /></p>
+<p><input type = "submit" style="text-align: center;" value = "Search"/></p>
+</form>
+</footer>
+<!-- Footer -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+
+  </body>
+</html>
