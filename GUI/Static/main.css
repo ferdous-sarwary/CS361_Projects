@@ -1,0 +1,49 @@
+body 
+{
+    background: #90ee90;
+}
+
+.weatherTable {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  text-align: center;
+}
+
+.weatherTable {
+color: white;
+}
+
+.weatherTable {
+	border: 1px solid #000000;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #00a2ff;
+  color: white;
+}
+
+.jumbotron {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  text-align: center;
+}
+
+form {
+  display: inline-block;
+}
+
+p {
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+}
