@@ -1,49 +1,57 @@
 body 
 {
-    background: #90ee90;
-}
-
-.weatherTable {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  text-align: center;
-}
-
-.weatherTable {
-color: white;
-}
-
-.weatherTable {
+	background: rgb(34,193,195, 0.5);
 	border: 1px solid #000000;
 }
 
+.weatherTable {
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin: 0;
+	text-align: center;
+}
+
+.weatherTable {
+	color: white;
+}
+
+.weatherTable {
+	border: 2px solid #000000;
+}
+
+.navbar{
+	background: rgb(34,193,195);
+	background: linear-gradient(0deg, rgba(34,193,195,1) 14%, rgba(255,215,130,1) 100%);
+}
+
 footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #00a2ff;
-  color: white;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background: rgb(34,193,195);
+	background: linear-gradient(180deg, rgba(34,193,195,1) 14%, rgba(255,215,130,1) 100%);
+	color: white;
+	border: 1px solid #000000;
 }
 
 .jumbotron {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  text-align: center;
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin: 0;
+	text-align: center;
 }
 
-form {
-  display: inline-block;
+.footer form {
+	display: inline-block !important;
 }
 
 p {
-  text-align: center;
-  margin-left:auto;
-  margin-right:auto;
+	text-align: center;
+	margin-left:auto;
+	margin-right:auto;
 }
