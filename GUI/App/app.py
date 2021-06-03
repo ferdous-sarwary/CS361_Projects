@@ -30,7 +30,6 @@ def GUI_One():
 #1. Perform FORM, city/state validation. 
 #2. Build URL. Scrape data from that specified URL. 
 #3. Render HTML. Convert temperature units, if needed, using API calls. Ensure buttons are updated appropriately. 
-
     counter = 0
     city_default = request.form['cityInput']
     state_default = request.form['stateInput']
@@ -251,6 +250,19 @@ def GUI_One():
         r_dict = res.json()
         december_low_str = str(round(r_dict["temp"], 1))
 
+        january_average = round(((float(january_high_str) + float(january_low_str))/2),1)
+        february_average = round(((float(february_high_str) + float(february_low_str))/2),1)  
+        march_average = round(((float(march_high_str) + float(march_low_str))/2),1)
+        april_average = round(((float(april_high_str) + float(april_low_str))/2),1)
+        may_average = round(((float(may_high_str) + float(may_low_str))/2),1)
+        june_average = round(((float(june_high_str) + float(june_low_str))/2),1)   
+        july_average = round(((float(july_high_str) + float(july_low_str))/2),1)   
+        august_average = round(((float(august_high_str) + float(august_low_str))/2),1) 
+        september_average = round(((float(september_high_str) + float(september_low_str))/2),1)   
+        october_average = round(((float(october_high_str) + float(october_low_str))/2),1)
+        november_average = round(((float(november_high_str) + float(november_low_str))/2),1)    
+        december_average = round(((float(december_high_str) + float(december_low_str))/2),1)   
+
         return render_template("GUI_celsius.html",
         january_high = january_high_str,
         february_high = february_high_str,
@@ -288,6 +300,18 @@ def GUI_One():
         october_rain = rowsTwo[3][4],
         november_rain = rowsTwo[3][5],
         december_rain = rowsTwo[3][6],
+        jan_av = january_average,
+        feb_av = february_average,
+        mar_av = march_average,
+        apr_av = april_average,
+        may_av = may_average,
+        jun_av = june_average,
+        jul_av = july_average,
+        aug_av = august_average,
+        sep_av = september_average,
+        oct_av = october_average,
+        nov_av = november_average,
+        dec_av = december_average,
         page_title = title,
         average_high_unit = "Average High (°C)",
         average_low_unit = "Average Low (°C)",
@@ -332,7 +356,6 @@ def GUI_Two():
   title = soup.h1.string
 
   if res.status_code == 200 or res.status_code == 301:
-    print('Title: ' + title)
     table = soup.find_all('table')[0]
     headers=[]
     headers = [0 for i in range(10)] 
@@ -409,125 +432,18 @@ def GUI_Two():
     rowsTwo[2] = [header.strip() for header in tableTwo.find_all('span')[16]] ,valsTwo[6], valsTwo[7], valsTwo[8], valsTwo[9], valsTwo[10], valsTwo[11]
     rowsTwo[3] = [header.strip() for header in tableTwo.find_all('span')[19]] ,valsTwo[12], valsTwo[13], valsTwo[14], valsTwo[15], valsTwo[16], valsTwo[17]
 
-    january_high = { "temp": rows[1][1], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= january_high)
-    r_dict = res.json()
-    january_high_str = str(round(r_dict["temp"], 1))
-
-    january_low = { "temp": rows[2][1], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= january_low)
-    r_dict = res.json()
-    january_low_str = str(round(r_dict["temp"], 1))
-
-    february_high = { "temp": rows[1][2], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= february_high)
-    r_dict = res.json()
-    february_high_str = str(round(r_dict["temp"], 1))
-
-    february_low = { "temp": rows[2][2], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= february_low)
-    r_dict = res.json()
-    february_low_str = str(round(r_dict["temp"], 1))
-
-    march_high = { "temp": rows[1][3], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= march_high)
-    r_dict = res.json()
-    march_high_str = str(round(r_dict["temp"], 1))
-
-    march_low = { "temp": rows[2][3], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= march_low)
-    r_dict = res.json()
-    march_low_str = str(round(r_dict["temp"], 1))
-
-    april_high = { "temp": rows[1][4], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= april_high)
-    r_dict = res.json()
-    april_high_str = str(round(r_dict["temp"], 1))
-
-    april_low = { "temp": rows[2][4], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= april_low)
-    r_dict = res.json()
-    april_low_str = str(round(r_dict["temp"], 1))
-
-    may_high = { "temp": rows[1][5], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= may_high)
-    r_dict = res.json()
-    may_high_str = str(round(r_dict["temp"], 1))
-    
-    may_low = { "temp": rows[2][5], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= may_low)
-    r_dict = res.json()
-    may_low_str = str(round(r_dict["temp"], 1))
-
-    june_high = { "temp": rows[1][6], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= june_high)
-    r_dict = res.json()
-    june_high_str = str(round(r_dict["temp"], 1))
-
-    june_low = { "temp": rows[2][6], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= june_low)
-    r_dict = res.json()
-    june_low_str = str(round(r_dict["temp"], 1))
-
-    july_high = { "temp": rowsTwo[1][1], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= july_high)
-    r_dict = res.json()
-    july_high_str = str(round(r_dict["temp"], 1))
-
-    july_low = { "temp": rowsTwo[2][1], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= july_low)
-    r_dict = res.json()
-    july_low_str = str(round(r_dict["temp"], 1))
-
-    august_high = { "temp": rowsTwo[1][2], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= august_high)
-    r_dict = res.json()
-    august_high_str = str(round(r_dict["temp"], 1))
-
-    august_low = { "temp": rowsTwo[2][2], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= august_low)
-    r_dict = res.json()
-    august_low_str = str(round(r_dict["temp"], 1))
-
-    september_high = { "temp": rowsTwo[1][3], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= september_high)
-    r_dict = res.json()
-    september_high_str = str(round(r_dict["temp"], 1))
-
-    september_low = { "temp": rowsTwo[2][3], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= september_low)
-    r_dict = res.json()
-    september_low_str = str(round(r_dict["temp"], 1))
-
-    october_high = { "temp": rowsTwo[1][4], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= october_high)
-    r_dict = res.json()
-    october_high_str = str(round(r_dict["temp"], 1))
-    
-    october_low = { "temp": rowsTwo[2][4], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= october_low)
-    r_dict = res.json()
-    october_low_str = str(round(r_dict["temp"], 1))
-
-    november_high = { "temp": rowsTwo[1][5], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= november_high)
-    r_dict = res.json()
-    november_high_str = str(round(r_dict["temp"], 1))
-
-    november_low = { "temp": rowsTwo[2][5], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= november_low)
-    r_dict = res.json()
-    november_low_str = str(round(r_dict["temp"], 1))
-
-    december_high = { "temp": rowsTwo[1][6], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= december_high)
-    r_dict = res.json()
-    december_high_str = str(round(r_dict["temp"], 1))
-
-    december_low = { "temp": rowsTwo[2][6], "unit": "F"}
-    res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= december_low)
-    r_dict = res.json()
-    december_low_str = str(round(r_dict["temp"], 1))
+    january_average = round(((rows[1][1] + rows[2][1]) / 2))       
+    february_average = round(((rows[1][2] + rows[2][2]) / 2))     
+    march_average = round(((rows[1][3] + rows[2][3]) / 2))     
+    april_average = round(((rows[1][4] + rows[2][4]) / 2))     
+    may_average = round(((rows[1][5] + rows[2][5]) / 2))     
+    june_average = round(((rows[1][6] + rows[2][6]) / 2))     
+    july_average = round(((rowsTwo[1][1] + rowsTwo[2][1]) / 2))     
+    august_average = round(((rowsTwo[1][2] + rowsTwo[2][2]) / 2))  
+    september_average = round(((rowsTwo[1][3] + rowsTwo[2][3]) / 2))     
+    october_average = round(((rowsTwo[1][4] + rowsTwo[2][4]) / 2))     
+    november_average = round(((rowsTwo[1][5] + rowsTwo[2][5]) / 2))    
+    december_average = round(((rowsTwo[1][6] + rowsTwo[2][6]) / 2))     
 
     return render_template("GUI_imperial.html",
     january_high = rows[1][1],
@@ -566,6 +482,18 @@ def GUI_Two():
     october_rain = rowsTwo[3][4],
     november_rain = rowsTwo[3][5],
     december_rain = rowsTwo[3][6],
+    jan_av = january_average,
+    feb_av = february_average,
+    mar_av = march_average,
+    apr_av = april_average,
+    may_av = may_average,
+    jun_av = june_average,
+    jul_av = july_average,
+    aug_av = august_average,
+    sep_av = september_average,
+    oct_av = october_average,
+    nov_av = november_average,
+    dec_av = december_average,
     page_title = title,
     average_high_unit = "Average High (°F)",
     average_low_unit = "Average Low (°F)",
@@ -611,7 +539,6 @@ def login():
       title = soup.h1.string
 
       if res.status_code == 200 or res.status_code == 301:
-        print('Title: ' + title)
         table = soup.find_all('table')[0]
         headers=[]
         headers = [0 for i in range(10)] 
@@ -697,6 +624,8 @@ def login():
         res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= january_low)
         r_dict = res.json()
         january_low_str = str(round(r_dict["temp"], 1))
+
+        january_average = (float(january_high_str) + float(january_low_str))
 
         february_high = { "temp": rows[1][2], "unit": "F"}
         res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= february_high)
@@ -807,6 +736,19 @@ def login():
         res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= december_low)
         r_dict = res.json()
         december_low_str = str(round(r_dict["temp"], 1))
+
+        january_average = round(((float(january_high_str) + float(january_low_str))/2),1)
+        february_average = round(((float(february_high_str) + float(february_low_str))/2),1)  
+        march_average = round(((float(march_high_str) + float(march_low_str))/2),1)
+        april_average = round(((float(april_high_str) + float(april_low_str))/2),1)
+        may_average = round(((float(may_high_str) + float(may_low_str))/2),1)
+        june_average = round(((float(june_high_str) + float(june_low_str))/2),1)   
+        july_average = round(((float(july_high_str) + float(july_low_str))/2),1)   
+        august_average = round(((float(august_high_str) + float(august_low_str))/2),1) 
+        september_average = round(((float(september_high_str) + float(september_low_str))/2),1)   
+        october_average = round(((float(october_high_str) + float(october_low_str))/2),1)
+        november_average = round(((float(november_high_str) + float(november_low_str))/2),1)    
+        december_average = round(((float(december_high_str) + float(december_low_str))/2),1)   
 
         return render_template("celsius.html",
         january_high = january_high_str,
@@ -845,6 +787,18 @@ def login():
         october_rain = rowsTwo[3][4],
         november_rain = rowsTwo[3][5],
         december_rain = rowsTwo[3][6],
+        jan_av = january_average,
+        feb_av = february_average,
+        mar_av = march_average,
+        apr_av = april_average,
+        may_av = may_average,
+        jun_av = june_average,
+        jul_av = july_average,
+        aug_av = august_average,
+        sep_av = september_average,
+        oct_av = october_average,
+        nov_av = november_average,
+        dec_av = december_average,
         page_title = title,
         average_high_unit = "Average High (°C)",
         average_low_unit = "Average Low (°C)",
@@ -878,7 +832,6 @@ def login():
       title = soup.h1.string
 
       if res.status_code == 200 or res.status_code == 301:
-        print('Title: ' + title)
         table = soup.find_all('table')[0]
         headers=[]
         headers = [0 for i in range(10)] 
@@ -955,125 +908,18 @@ def login():
         rowsTwo[2] = [header.strip() for header in tableTwo.find_all('span')[16]] ,valsTwo[6], valsTwo[7], valsTwo[8], valsTwo[9], valsTwo[10], valsTwo[11]
         rowsTwo[3] = [header.strip() for header in tableTwo.find_all('span')[19]] ,valsTwo[12], valsTwo[13], valsTwo[14], valsTwo[15], valsTwo[16], valsTwo[17]
 
-        january_high = { "temp": rows[1][1], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= january_high)
-        r_dict = res.json()
-        january_high_str = str(round(r_dict["temp"], 1))
-
-        january_low = { "temp": rows[2][1], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= january_low)
-        r_dict = res.json()
-        january_low_str = str(round(r_dict["temp"], 1))
-
-        february_high = { "temp": rows[1][2], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= february_high)
-        r_dict = res.json()
-        february_high_str = str(round(r_dict["temp"], 1))
-
-        february_low = { "temp": rows[2][2], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= february_low)
-        r_dict = res.json()
-        february_low_str = str(round(r_dict["temp"], 1))
-
-        march_high = { "temp": rows[1][3], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= march_high)
-        r_dict = res.json()
-        march_high_str = str(round(r_dict["temp"], 1))
-
-        march_low = { "temp": rows[2][3], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= march_low)
-        r_dict = res.json()
-        march_low_str = str(round(r_dict["temp"], 1))
-
-        april_high = { "temp": rows[1][4], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= april_high)
-        r_dict = res.json()
-        april_high_str = str(round(r_dict["temp"], 1))
-
-        april_low = { "temp": rows[2][4], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= april_low)
-        r_dict = res.json()
-        april_low_str = str(round(r_dict["temp"], 1))
-
-        may_high = { "temp": rows[1][5], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= may_high)
-        r_dict = res.json()
-        may_high_str = str(round(r_dict["temp"], 1))
-        
-        may_low = { "temp": rows[2][5], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= may_low)
-        r_dict = res.json()
-        may_low_str = str(round(r_dict["temp"], 1))
-
-        june_high = { "temp": rows[1][6], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= june_high)
-        r_dict = res.json()
-        june_high_str = str(round(r_dict["temp"], 1))
-
-        june_low = { "temp": rows[2][6], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= june_low)
-        r_dict = res.json()
-        june_low_str = str(round(r_dict["temp"], 1))
-
-        july_high = { "temp": rowsTwo[1][1], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= july_high)
-        r_dict = res.json()
-        july_high_str = str(round(r_dict["temp"], 1))
-
-        july_low = { "temp": rowsTwo[2][1], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= july_low)
-        r_dict = res.json()
-        july_low_str = str(round(r_dict["temp"], 1))
-
-        august_high = { "temp": rowsTwo[1][2], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= august_high)
-        r_dict = res.json()
-        august_high_str = str(round(r_dict["temp"], 1))
-
-        august_low = { "temp": rowsTwo[2][2], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= august_low)
-        r_dict = res.json()
-        august_low_str = str(round(r_dict["temp"], 1))
-
-        september_high = { "temp": rowsTwo[1][3], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= september_high)
-        r_dict = res.json()
-        september_high_str = str(round(r_dict["temp"], 1))
-
-        september_low = { "temp": rowsTwo[2][3], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= september_low)
-        r_dict = res.json()
-        september_low_str = str(round(r_dict["temp"], 1))
-
-        october_high = { "temp": rowsTwo[1][4], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= october_high)
-        r_dict = res.json()
-        october_high_str = str(round(r_dict["temp"], 1))
-        
-        october_low = { "temp": rowsTwo[2][4], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= october_low)
-        r_dict = res.json()
-        october_low_str = str(round(r_dict["temp"], 1))
-
-        november_high = { "temp": rowsTwo[1][5], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= november_high)
-        r_dict = res.json()
-        november_high_str = str(round(r_dict["temp"], 1))
-
-        november_low = { "temp": rowsTwo[2][5], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= november_low)
-        r_dict = res.json()
-        november_low_str = str(round(r_dict["temp"], 1))
-
-        december_high = { "temp": rowsTwo[1][6], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= december_high)
-        r_dict = res.json()
-        december_high_str = str(round(r_dict["temp"], 1))
-
-        december_low = { "temp": rowsTwo[2][6], "unit": "F"}
-        res = requests.post('https://sacred-vault-313118.wm.r.appspot.com/api/temperature', json= december_low)
-        r_dict = res.json()
-        december_low_str = str(round(r_dict["temp"], 1))
+        january_average = round(((rows[1][1] + rows[2][1]) / 2))       
+        february_average = round(((rows[1][2] + rows[2][2]) / 2))     
+        march_average = round(((rows[1][3] + rows[2][3]) / 2))     
+        april_average = round(((rows[1][4] + rows[2][4]) / 2))     
+        may_average = round(((rows[1][5] + rows[2][5]) / 2))     
+        june_average = round(((rows[1][6] + rows[2][6]) / 2))     
+        july_average = round(((rowsTwo[1][1] + rowsTwo[2][1]) / 2))     
+        august_average = round(((rowsTwo[1][2] + rowsTwo[2][2]) / 2))  
+        september_average = round(((rowsTwo[1][3] + rowsTwo[2][3]) / 2))     
+        october_average = round(((rowsTwo[1][4] + rowsTwo[2][4]) / 2))     
+        november_average = round(((rowsTwo[1][5] + rowsTwo[2][5]) / 2))    
+        december_average = round(((rowsTwo[1][6] + rowsTwo[2][6]) / 2))     
 
         return render_template("imperial.html",
         january_high = rows[1][1],
@@ -1112,6 +958,18 @@ def login():
         october_rain = rowsTwo[3][4],
         november_rain = rowsTwo[3][5],
         december_rain = rowsTwo[3][6],
+        jan_av = january_average,
+        feb_av = february_average,
+        mar_av = march_average,
+        apr_av = april_average,
+        may_av = may_average,
+        jun_av = june_average,
+        jul_av = july_average,
+        aug_av = august_average,
+        sep_av = september_average,
+        oct_av = october_average,
+        nov_av = november_average,
+        dec_av = december_average,
         page_title = title,
         average_high_unit = "Average High (°F)",
         average_low_unit = "Average Low (°F)",
@@ -1159,8 +1017,6 @@ def json_example():
       res = requests.get(fullURL, timeout= 5)
       soup = bs4.BeautifulSoup(res.content, "html.parser");
 
-      print("fullURL: " + fullURL)
-      print(res.status_code)    
       error_message = {"Please verify city and state. Error Status Code: ": res.status_code}
 
       if res.status_code == 200 or res.status_code == 301:
